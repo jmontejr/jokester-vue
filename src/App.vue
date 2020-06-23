@@ -5,7 +5,10 @@
             <div class="col-md-12">
                 <h1 class="app__title">{{ title }}</h1>
                 <h2 class="app__subtitle">Got Jokes?</h2>
-                <button class="btn btn-primary mt-3" @click="INIT_JOKES">Add ten random jokes</button>
+                <div class="d-flex justify-content-center align-items-center">
+                    <button class="btn btn-primary mt-3 mx-1" @click="INIT_JOKES">Add ten random jokes</button>
+                    <button class="btn btn-primary mt-3 mx-1" @click="ADD_JOKE">Add a joke</button>
+                </div>
             </div>
         </div>
 
@@ -30,7 +33,10 @@ export default {
             title: process.env.VUE_APP_TITLE,
         };
     },
-    methods: mapActions([ 'INIT_JOKES' ]),
+    methods: mapActions([ 
+        'INIT_JOKES',
+        'ADD_JOKE' 
+    ]),
     components: {
         Joke
     }

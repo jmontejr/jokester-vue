@@ -7,7 +7,7 @@ const jokes = {
         fetch(`${URL_BASE_JOKES_API}/ten`, { methods: 'GET' })
         .then(response => response.json())
         .then(json => {
-            commit(MutationTypes.INIT_JOKES, json)
+            commit(MutationTypes.INIT_JOKES, json);
         })
         .catch(error => console.error(error));
     },
@@ -16,10 +16,18 @@ const jokes = {
         fetch(`${URL_BASE_JOKES_API}/random`, { methods: 'GET' })
             .then(response => response.json())
             .then(json => {
-                commit(MutationTypes.ADD_JOKE, json)
+                commit(MutationTypes.ADD_JOKE, json);
             })
             .catch(error => console.error(error));
-    }
+    },
+
+    [MutationTypes.REMOVE_JOKE]: ({ commit }, index) => {
+        commit(MutationTypes.REMOVE_JOKE, index);
+    },
+
+    [MutationTypes.CLEAR_JOKES]: ({ commit }) => {
+        commit(MutationTypes.CLEAR_JOKES);
+    },
 }
 
 export default {

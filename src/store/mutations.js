@@ -7,7 +7,15 @@ const mutations = {
 
     [MutationTypes.ADD_JOKE] (state, payload) {
         state.jokes.push(payload);
-    }
+    },
+
+    [MutationTypes.REMOVE_JOKE] (state, index) {
+        state.jokes.splice(index, 1);
+    },
+
+    [MutationTypes.CLEAR_JOKES] (state) {
+        state.jokes = [];
+    },
 };
 
 export default mutations;

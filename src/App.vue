@@ -8,6 +8,7 @@
                 <div class="d-flex justify-content-center align-items-center">
                     <button class="btn btn-primary mt-3 mx-1" @click="INIT_JOKES">Add ten random jokes</button>
                     <button class="btn btn-primary mt-3 mx-1" @click="ADD_JOKE">Add a joke</button>
+                    <button class="btn btn-danger mt-3 mx-1" @click="CLEAR_JOKES">Clear all jokes!</button>
                 </div>
             </div>
         </div>
@@ -15,6 +16,7 @@
         <div class="row mt-5">
             <joke 
                 :joke="joke" 
+                :index="index"
                 v-for="(joke, index) in $store.state.jokes" 
                 :key="index" 
             />
@@ -35,7 +37,8 @@ export default {
     },
     methods: mapActions([ 
         'INIT_JOKES',
-        'ADD_JOKE' 
+        'ADD_JOKE',
+        'CLEAR_JOKES',
     ]),
     components: {
         Joke

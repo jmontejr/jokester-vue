@@ -20,5 +20,15 @@
         &__title {
             font-size: 1.5rem;
         }
+
+        &--filter {
+            label {
+                cursor: pointer;
+            }
+
+            input {
+                cursor: pointer;
+            }
+        }
     }
 }

@@ -10,6 +10,19 @@
                     <button class="btn btn-primary mt-3 mx-1" @click="ADD_JOKE">Add a joke</button>
                     <button class="btn btn-danger mt-3 mx-1" @click="CLEAR_JOKES">Clear all jokes!</button>
                 </div>
+                <div class="mt-3 app--filter">
+                    <label 
+                        class="mx-3"
+                        v-for="(type, index) in types" 
+                        :key="index">
+                        <input 
+                            :value="type" 
+                            checked 
+                            type="checkbox"
+                            v-model="checkedTypes">
+                        {{ type }}&nbsp;
+                    </label>
+                </div>
             </div>
         </div>
 
@@ -18,6 +31,7 @@
                 :joke="joke" 
                 :index="index"
                 v-for="(joke, index) in $store.state.jokes" 
+                v-show="checkedTypes.includes(joke.type)"
                 :key="index" 
             />
         </div>
@@ -30,9 +44,12 @@ import { mapActions } from 'vuex';
 import Joke from '@/components/Joke.vue';
 
 export default {
+    name: 'App',
     data() {
         return {
             title: process.env.VUE_APP_TITLE,
+            types: ['general', 'knock-knock', 'programming'],
+            checkedTypes: ['general', 'knock-knock', 'programming'],
         };
     },
     methods: mapActions([ 
@@ -41,7 +58,7 @@ export default {
         'CLEAR_JOKES',
     ]),
     components: {
-        Joke
+        Joke,
     }
 };
 </script>
